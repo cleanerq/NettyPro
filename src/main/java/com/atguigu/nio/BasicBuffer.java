@@ -23,11 +23,11 @@ public class BasicBuffer {
         //将buffer转换，读写切换(!!!)
         /*
         public final Buffer flip() {
-        limit = position; //读数据不能超过5
-        position = 0;
-        mark = -1;
-        return this;
-    }
+            limit = position; //读数据不能超过5
+            position = 0;
+            mark = -1;
+            return this;
+        }
          */
         intBuffer.flip();
         intBuffer.position(1);//1,2
