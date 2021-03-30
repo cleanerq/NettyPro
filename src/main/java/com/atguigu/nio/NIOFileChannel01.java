@@ -1,6 +1,7 @@
 package com.atguigu.nio;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 
@@ -15,19 +16,24 @@ public class NIOFileChannel01 {
         //这个 fileChannel 真实 类型是  FileChannelImpl
         FileChannel fileChannel = fileOutputStream.getChannel();
 
-        //创建一个缓冲区 ByteBuffer
-        ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+        try {
+            //创建一个缓冲区 ByteBuffer
+            ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
 
-        //将 str 放入 byteBuffer
-        byteBuffer.put(str.getBytes());
+            //将 str 放入 byteBuffer
+            byteBuffer.put(str.getBytes());
 
 
-        //对byteBuffer 进行flip
-        byteBuffer.flip();
+            //对byteBuffer 进行flip
+            byteBuffer.flip();
 
-        //将byteBuffer 数据写入到 fileChannel
-        fileChannel.write(byteBuffer);
-        fileOutputStream.close();
-
+            //将byteBuffer 数据写入到 fileChannel
+            fileChannel.write(byteBuffer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            fileOutputStream.close();
+            fileChannel.close();
+        }
     }
 }
