@@ -21,6 +21,8 @@ public class NIOByteBufferPutGet {
         System.out.println(buffer.getInt());
         System.out.println(buffer.getLong());
         System.out.println(buffer.getChar());
-        System.out.println(buffer.getLong());
+        System.out.println(buffer.getShort());
+        // 异常
+//        System.out.println(buffer.getLong());
     }
 }
