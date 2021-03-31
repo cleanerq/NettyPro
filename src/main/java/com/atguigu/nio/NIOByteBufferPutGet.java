@@ -22,7 +22,7 @@ public class NIOByteBufferPutGet {
         System.out.println(buffer.getLong());
         System.out.println(buffer.getChar());
         System.out.println(buffer.getShort());
-        // 异常
+        // 异常 BufferUnderflowException
 //        System.out.println(buffer.getLong());
     }
 }
