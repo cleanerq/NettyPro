@@ -21,7 +21,7 @@ public class NIOServer {
         //设置为非阻塞
         serverSocketChannel.configureBlocking(false);
 
-        //把 serverSocketChannel 注册到  selector 关心 事件为 OP_ACCEPT
+        //把 serverSocketChannel 注册到  selector 关心 事件为 OP_ACCEPT 连接事件
         serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
 
         System.out.println("注册后的selectionkey 数量=" + selector.keys().size()); // 1
