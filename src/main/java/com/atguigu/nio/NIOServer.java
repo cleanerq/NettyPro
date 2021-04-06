@@ -10,7 +10,6 @@ public class NIOServer {
     public static void main(String[] args) throws Exception {
 
         //创建ServerSocketChannel -> ServerSocket
-
         ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
 
         //得到一个Selecor对象
@@ -59,10 +58,7 @@ public class NIOServer {
                     //将socketChannel 注册到selector, 关注事件为 OP_READ， 同时给socketChannel
                     //关联一个Buffer
                     socketChannel.register(selector, SelectionKey.OP_READ, ByteBuffer.allocate(1024));
-
                     System.out.println("客户端连接后 ，注册的selectionkey 数量=" + selector.keys().size()); //2,3,4..
-
-
                 }
                 if (key.isReadable()) {  //发生 OP_READ
 
@@ -73,15 +69,11 @@ public class NIOServer {
                     ByteBuffer buffer = (ByteBuffer) key.attachment();
                     channel.read(buffer);
                     System.out.println("form 客户端 " + new String(buffer.array()));
-
                 }
 
                 //手动从集合中移动当前的selectionKey, 防止重复操作
                 keyIterator.remove();
-
             }
-
         }
-
     }
 }
